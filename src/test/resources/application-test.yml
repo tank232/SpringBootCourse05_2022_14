@@ -1,0 +1,22 @@
+spring:
+  shell:
+    interactive:
+      enabled: false
+
+  jpa:
+    hibernate.ddl-auto: create
+    generate-ddl: true
+    show-sql: true
+    database-platform: h2
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+
+  datasource:
+    url: jdbc:h2:mem:library;MODE=LEGACY;DB_CLOSE_DELAY=-1
+    initialization-mode: always
+    driverClassName: org.h2.Driver
+
+  hibernate:
+    enable_lazy_load_no_trans: true

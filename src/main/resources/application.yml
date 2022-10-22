@@ -1,0 +1,42 @@
+spring:
+  jpa:
+    hibernate.ddl-auto: create
+    generate-ddl: true
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+
+  datasource:
+    url: jdbc:h2:mem:library;DB_CLOSE_DELAY=-1;MODE=MySQL
+    initialization-mode: always
+    driverClassName: org.h2.Driver
+    dialect: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.H2Dialect
+    schema: classpath:/org/springframework/batch/core/schema-h2.sql
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  data:
+    mongodb:
+      database: company
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      dialect: org.hibernate.dialect.H2Dialect
+      initialize-schema: never
+      schema: classpath:/org/springframework/batch/core/schema-h2.sql
+hibernate:
+  dialect: org.hibernate.dialect.H2Dialect
+mongock:
+  runner-type: "InitializingBean"
+  change-logs-scan-package:
+    - ru.otus.example.springbatch.chandgelogs
+  mongo-db:
+    write-concern:
+      journal: false
+    read-concern: local
